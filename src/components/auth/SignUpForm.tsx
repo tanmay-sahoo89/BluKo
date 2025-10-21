@@ -54,17 +54,17 @@ export function SignUpForm({ onToggle }: SignUpFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="fullName" className="block text-sm font-medium text-gray-200 mb-2">
+        <label htmlFor="fullName" className="block text-sm font-medium text-[#A8B8CC] mb-2">
           Full Name
         </label>
         <div className="relative">
-          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6A7B93]" size={20} />
           <input
             id="fullName"
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-[#A5CCCC] bg-opacity-20 border border-[#A5CCCC] border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDC787] focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 bg-[#1E4C80] bg-opacity-40 border border-[#6A7B93] border-opacity-30 rounded-lg text-white placeholder-[#6A7B93] focus:outline-none focus:ring-2 focus:ring-[#FBC888] focus:border-transparent"
             placeholder="Enter your full name"
             required
           />
@@ -72,17 +72,17 @@ export function SignUpForm({ onToggle }: SignUpFormProps) {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-[#A8B8CC] mb-2">
           Email Address
         </label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6A7B93]" size={20} />
           <input
             id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-[#A5CCCC] bg-opacity-20 border border-[#A5CCCC] border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDC787] focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 bg-[#1E4C80] bg-opacity-40 border border-[#6A7B93] border-opacity-30 rounded-lg text-white placeholder-[#6A7B93] focus:outline-none focus:ring-2 focus:ring-[#FBC888] focus:border-transparent"
             placeholder="Enter your email"
             required
           />
@@ -90,17 +90,17 @@ export function SignUpForm({ onToggle }: SignUpFormProps) {
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
+        <label htmlFor="password" className="block text-sm font-medium text-[#A8B8CC] mb-2">
           Password
         </label>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6A7B93]" size={20} />
           <input
             id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-[#A5CCCC] bg-opacity-20 border border-[#A5CCCC] border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDC787] focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 bg-[#1E4C80] bg-opacity-40 border border-[#6A7B93] border-opacity-30 rounded-lg text-white placeholder-[#6A7B93] focus:outline-none focus:ring-2 focus:ring-[#FBC888] focus:border-transparent"
             placeholder="Create a password"
             required
           />
@@ -108,17 +108,17 @@ export function SignUpForm({ onToggle }: SignUpFormProps) {
       </div>
 
       <div>
-        <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-200 mb-2">
+        <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#A8B8CC] mb-2">
           Confirm Password
         </label>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6A7B93]" size={20} />
           <input
             id="confirmPassword"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-[#A5CCCC] bg-opacity-20 border border-[#A5CCCC] border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDC787] focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 bg-[#1E4C80] bg-opacity-40 border border-[#6A7B93] border-opacity-30 rounded-lg text-white placeholder-[#6A7B93] focus:outline-none focus:ring-2 focus:ring-[#FBC888] focus:border-transparent"
             placeholder="Confirm your password"
             required
           />
@@ -134,17 +134,17 @@ export function SignUpForm({ onToggle }: SignUpFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#FDC787] hover:bg-[#FDC787]/90 text-[#021334] font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#FBC888] hover:bg-[#FBC888]/90 text-[#002B5C] font-semibold py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? 'Creating Account...' : 'Sign Up'}
       </button>
 
-      <p className="text-center text-gray-300 text-sm">
+      <p className="text-center text-[#A8B8CC] text-sm">
         Already have an account?{' '}
         <button
           type="button"
           onClick={onToggle}
-          className="text-[#FDC787] hover:text-[#977086] font-medium transition-colors"
+          className="text-[#FBC888] hover:text-[#FBC888]/80 font-medium transition-colors"
         >
           Sign In
         </button>

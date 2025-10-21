@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
-import { Download, Plus, Eye, Trash2, Share2, Edit, FileText } from 'lucide-react';
+import { Download, Plus, Eye, Trash2, Share2, Edit, FileText, Bot } from 'lucide-react';
 import { NavigationHeader } from '../components/shared/NavigationHeader';
 
 interface Resume {
@@ -282,30 +282,30 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#021334] via-[#012A61] to-[#275A91] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#002B5C] via-[#003A6E] to-[#1E4C80] flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#021334] via-[#012A61] to-[#275A91]">
+    <div className="min-h-screen bg-gradient-to-br from-[#002B5C] via-[#003A6E] to-[#1E4C80]">
       <NavigationHeader currentPage="resume" onNavigate={onNavigate} />
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-[#012A61] bg-opacity-50 backdrop-blur-lg border border-[#A5CCCC] border-opacity-20 rounded-2xl p-8 mb-8">
+          <div className="bg-[#003A6E] bg-opacity-50 backdrop-blur-lg border border-[#6A7B93] border-opacity-20 rounded-2xl p-8 mb-8">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-2">My Resumes</h2>
-                <p className="text-gray-300">
+                <p className="text-[#A8B8CC]">
                   Generate and manage your professional resumes with multiple download formats.
                 </p>
               </div>
               <button
                 onClick={generateResume}
                 disabled={generating}
-                className="flex items-center gap-2 bg-[#FDC787] hover:bg-[#FDC787]/90 text-[#021334] font-semibold px-6 py-2 rounded-lg transition-all duration-200 disabled:opacity-50"
+                className="flex items-center gap-2 bg-[#FBC888] hover:bg-[#FBC888]/90 text-[#002B5C] font-semibold px-6 py-2 rounded-lg transition-all duration-200 disabled:opacity-50"
               >
                 <Plus size={18} />
                 <span>{generating ? 'Generating...' : 'Generate New Resume'}</span>
@@ -314,15 +314,15 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
           </div>
 
           {resumes.length === 0 ? (
-            <div className="bg-[#012A61] bg-opacity-50 backdrop-blur-lg border border-[#A5CCCC] border-opacity-20 rounded-2xl p-12 text-center">
-              <FileText className="mx-auto text-[#FDC787] mb-4" size={64} />
-              <p className="text-gray-300 text-lg mb-4">You haven't created any resumes yet.</p>
-              <p className="text-gray-400 mb-6">
+            <div className="bg-[#003A6E] bg-opacity-50 backdrop-blur-lg border border-[#6A7B93] border-opacity-20 rounded-2xl p-12 text-center">
+              <FileText className="mx-auto text-[#FBC888] mb-4" size={64} />
+              <p className="text-[#A8B8CC] text-lg mb-4">You haven't created any resumes yet.</p>
+              <p className="text-[#6A7B93] mb-6">
                 Start by generating your first professional resume or chat with our AI Assistant for help.
               </p>
               <button
                 onClick={() => onNavigate('chatbot')}
-                className="bg-[#275A91] hover:bg-[#275A91]/80 text-white px-6 py-3 rounded-lg transition-all duration-200"
+                className="bg-[#1E4C80] hover:bg-[#2A4F7A] text-white px-6 py-3 rounded-lg transition-all duration-200"
               >
                 Create First Resume with AI Assistant
               </button>
@@ -332,20 +332,20 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
               {resumes.map((resume) => (
                 <div
                   key={resume.id}
-                  className="bg-[#012A61] bg-opacity-50 backdrop-blur-lg border border-[#A5CCCC] border-opacity-20 rounded-2xl p-6 hover:bg-opacity-70 transition-all duration-300 group"
+                  className="bg-[#003A6E] bg-opacity-50 backdrop-blur-lg border border-[#6A7B93] border-opacity-20 rounded-2xl p-6 hover:bg-opacity-70 transition-all duration-300 group"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-white mb-1">{resume.resume_name}</h3>
-                      <p className="text-gray-400 text-xs">
+                      <p className="text-[#6A7B93] text-xs">
                         Created: {new Date(resume.created_at).toLocaleDateString()}
                       </p>
-                      <p className="text-gray-400 text-xs mt-1">
+                      <p className="text-[#6A7B93] text-xs mt-1">
                         Size: {getFileSize(resume)}
                       </p>
                     </div>
-                    <div className="bg-[#275A91] w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <FileText className="text-[#FDC787]" size={24} />
+                    <div className="bg-[#1E4C80] w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <FileText className="text-[#FBC888]" size={24} />
                     </div>
                   </div>
                   <div className="flex items-center gap-2 mb-2">
@@ -355,22 +355,29 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
                   </div>
                   <div className="grid grid-cols-2 gap-2 mt-4">
                     <button
+                      onClick={() => onNavigate('chatbot')}
+                      className="col-span-2 flex items-center justify-center gap-2 bg-[#FBC888] hover:bg-[#FBC888]/90 text-[#002B5C] font-semibold px-3 py-2 rounded-lg transition-all duration-200 text-sm"
+                    >
+                      <Bot size={14} />
+                      <span>Edit with AI</span>
+                    </button>
+                    <button
                       onClick={() => viewResume(resume.id)}
-                      className="flex items-center justify-center gap-2 bg-[#275A91] hover:bg-[#275A91]/80 text-white px-3 py-2 rounded-lg transition-all duration-200 text-sm"
+                      className="flex items-center justify-center gap-2 bg-[#1E4C80] hover:bg-[#2A4F7A] text-white px-3 py-2 rounded-lg transition-all duration-200 text-sm"
                     >
                       <Eye size={14} />
                       <span>View</span>
                     </button>
                     <button
                       onClick={() => setShowDownloadModal(resume.id)}
-                      className="flex items-center justify-center gap-2 bg-[#FDC787] hover:bg-[#FDC787]/90 text-[#021334] font-semibold px-3 py-2 rounded-lg transition-all duration-200 text-sm"
+                      className="flex items-center justify-center gap-2 bg-[#FBC888] hover:bg-[#FBC888]/90 text-[#002B5C] font-semibold px-3 py-2 rounded-lg transition-all duration-200 text-sm"
                     >
                       <Download size={14} />
                       <span>Download</span>
                     </button>
                     <button
                       onClick={() => shareResume(resume.id)}
-                      className="flex items-center justify-center gap-2 bg-[#A5CCCC] bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-2 rounded-lg transition-all duration-200 text-sm"
+                      className="flex items-center justify-center gap-2 bg-[#6A7B93] bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-2 rounded-lg transition-all duration-200 text-sm"
                     >
                       <Share2 size={14} />
                       <span>Share</span>
@@ -392,26 +399,26 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
 
       {showDownloadModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="bg-[#012A61] border border-[#A5CCCC] border-opacity-20 rounded-2xl p-8 max-w-md w-full">
+          <div className="bg-[#003A6E] border border-[#6A7B93] border-opacity-20 rounded-2xl p-8 max-w-md w-full">
             <h3 className="text-2xl font-bold text-white mb-4">Download Resume</h3>
-            <p className="text-gray-300 mb-6">Choose your preferred format:</p>
+            <p className="text-[#A8B8CC] mb-6">Choose your preferred format:</p>
             <div className="space-y-3">
               <button
                 onClick={() => downloadResume(showDownloadModal, 'html')}
-                className="w-full flex items-center justify-between bg-[#275A91] hover:bg-[#275A91]/80 text-white px-6 py-4 rounded-lg transition-all duration-200"
+                className="w-full flex items-center justify-between bg-[#1E4C80] hover:bg-[#2A4F7A] text-white px-6 py-4 rounded-lg transition-all duration-200"
               >
                 <div className="flex items-center gap-3">
                   <FileText size={24} />
                   <div className="text-left">
                     <div className="font-semibold">HTML Format</div>
-                    <div className="text-xs text-gray-300">Web-friendly format</div>
+                    <div className="text-xs text-[#A8B8CC]">Web-friendly format</div>
                   </div>
                 </div>
                 <Download size={20} />
               </button>
               <button
                 onClick={() => downloadResume(showDownloadModal, 'pdf')}
-                className="w-full flex items-center justify-between bg-[#FDC787] hover:bg-[#FDC787]/90 text-[#021334] px-6 py-4 rounded-lg transition-all duration-200 font-semibold"
+                className="w-full flex items-center justify-between bg-[#FBC888] hover:bg-[#FBC888]/90 text-[#002B5C] px-6 py-4 rounded-lg transition-all duration-200 font-semibold"
               >
                 <div className="flex items-center gap-3">
                   <FileText size={24} />
@@ -425,7 +432,7 @@ export function ResumePage({ onBack, onNavigate }: ResumePageProps) {
             </div>
             <button
               onClick={() => setShowDownloadModal(null)}
-              className="w-full mt-4 text-gray-400 hover:text-white transition-colors py-2"
+              className="w-full mt-4 text-[#6A7B93] hover:text-white transition-colors py-2"
             >
               Cancel
             </button>

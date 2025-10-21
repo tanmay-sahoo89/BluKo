@@ -12,7 +12,7 @@ function AppContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#021334] via-[#012A61] to-[#275A91] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#002B5C] via-[#003A6E] to-[#1E4C80] flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
       </div>
     );
